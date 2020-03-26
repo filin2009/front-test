@@ -3,6 +3,12 @@
 //localStorage.getItem("sms");
 
 export class TestDrawer {
+	dataFromFile: string ;
+
+	setData (data : string) {
+		this.dataFromFile = data;
+	}
+
 	draw() {
 		const body = $('body');
 
@@ -34,15 +40,22 @@ export class TestDrawer {
 		const mustaView = {"SMSData": SMSData};
 		console.log(mustaView);
 		*/
-
+        this.loadData();
+		console.log("dataFromFile =" + this.dataFromFile);
 		body.append($.mustache(window.TemplateJS.test, mustaView));
 	}
 
 	loadData() {
-		/*
-		$.ajax({
 
+		$.ajax({url: "./js/sms.js", dataType: "json", success: function(result){
+				console.log(result);
+				//return result;
+			}
 		});
-        */
+
+		//let vData: string  = $.ajax({url: "./js/sms.js", dataType: "json",async: false}).response;
+		//console.log("vData="+vData);
+		//this.dataFromFile = vData;
+
 	}
 }
