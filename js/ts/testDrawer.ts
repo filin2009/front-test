@@ -3,7 +3,7 @@
 //localStorage.getItem("sms");
 
 export class TestDrawer {
-	dataFromFile: string ;
+	dataFromFile: any ;
 
 	setData (data : string) {
 		this.dataFromFile = data;
@@ -40,20 +40,37 @@ export class TestDrawer {
 		const mustaView = {"SMSData": SMSData};
 		console.log(mustaView);
 		*/
-        this.loadData();
-		console.log("dataFromFile =" + this.dataFromFile);
-		body.append($.mustache(window.TemplateJS.test, mustaView));
+//        this.dataFromFile =
+    	this.loadData();
+		//console.log("this.dataFromFile2");
+		//console.log(this.dataFromFile);
+		//body.append($.mustache(window.TemplateJS.test, mustaView));
+		const mustaView2 = {"SMSData": this.dataFromFile};
+		//console.log("mustaView2");
+		//console.log(mustaView2);
+		body.append($.mustache(window.TemplateJS.test, mustaView2));
 	}
 
 	loadData() {
+		//this.dataFromFile
+		let vData = $.ajax({url: "./js/sms.js", dataType: "json",async: false}).responseText;
 
-		$.ajax({url: "./js/sms.js", dataType: "json", success: function(result){
-				console.log(result);
+				//context: document.body,
+				//dataFilter(data, dataType) {},
+				   //success: function(result){
+				  //     console.log("Inside = "+result);
+					//   console.log(result);
+					//   this.
 				//return result;
-			}
-		});
-
-		//let vData: string  = $.ajax({url: "./js/sms.js", dataType: "json",async: false}).response;
+			//}
+		//const mustaView2 = { "SMSData": 	vData};
+		//var mustaView2 = JSON.parse(vData);
+		//console.log("mustaView2="+mustaView2);
+		//console.log(mustaView2);
+		this.dataFromFile = JSON.parse(vData);
+		//console.log("this.dataFromFile1");
+		//console.log(this.dataFromFile);
+				//let vData: string  = $.ajax({url: "./js/sms.js", dataType: "json",async: false}).response;
 		//console.log("vData="+vData);
 		//this.dataFromFile = vData;
 

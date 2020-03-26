@@ -1,8 +1,7 @@
 <div>
-    <table style="width:100%">
-        <tr>
+        <div class="flex-container">
             {{#SMSData}}
-            <td>
+            <div>
                 {{Name}}<br>
                 <img src="https://ilogik.planfix.ru/{{Ico}}"><br>
                 <!-- Rounded switch -->
@@ -10,8 +9,7 @@
                     <input type="checkbox">
                     <span class="slider round"></span>
                 </label>
-            </td>
+            </div>
             {{/SMSData}}
-        </tr>
-    </table>
+        </div>
 </div>
