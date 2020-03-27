@@ -5,18 +5,16 @@
 export class TestDrawer {
 	dataFromFile: any ;
 
-	setData (data : string) {
-		this.dataFromFile = data;
-	}
-
 	draw() {
 		const body = $('body');
-
+		/*
 		const mustaView = { "SMSData": 	[
 			{"ID":3,"Name":"alphasms.ua","Ico":"/img/sms/alphasms.png"},
 			{"ID":25,"Name":"aramba.ru","Ico":"/img/sms/aramba.png"},
 			{"ID":21,"Name":"atompark.com","Ico":"/img/sms/atompark.png"}
 		]};
+
+		 */
 
 		/*
 		const mustaView = fetch("./js/sms.js")
@@ -45,10 +43,22 @@ export class TestDrawer {
 		//console.log("this.dataFromFile2");
 		//console.log(this.dataFromFile);
 		//body.append($.mustache(window.TemplateJS.test, mustaView));
-		const mustaView2 = {"SMSData": this.dataFromFile};
+		const mustaView = {"SMSData": this.dataFromFile};
 		//console.log("mustaView2");
 		//console.log(mustaView2);
-		body.append($.mustache(window.TemplateJS.test, mustaView2));
+		body.append($.mustache(window.TemplateJS.test, mustaView));
+
+		$(document).ready(function(){
+			TestDrawer.PopUpHide();
+		});
+	}
+
+	static PopUpShow(){
+		$("#popup1").show();
+	}
+
+	static PopUpHide(){
+		$("#popup1").hide();
 	}
 
 	loadData() {
